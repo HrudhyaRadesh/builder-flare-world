@@ -2,6 +2,9 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { register, login, me } from "./routes/auth";
+import { createDonation, listDonations, updateDonationStatus, getLeaderboard, getAnalytics } from "./routes/donations";
+import { createPaymentIntent } from "./routes/payments";
 
 export function createServer() {
   const app = express();
@@ -11,13 +14,29 @@ export function createServer() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // Example API routes
+  // Health
   app.get("/api/ping", (_req, res) => {
     const ping = process.env.PING_MESSAGE ?? "ping";
     res.json({ message: ping });
   });
 
+  // Demo
   app.get("/api/demo", handleDemo);
+
+  // Auth
+  app.post("/api/auth/register", register);
+  app.post("/api/auth/login", login);
+  app.get("/api/auth/me", me);
+
+  // Donations
+  app.post("/api/donations", createDonation);
+  app.get("/api/donations", listDonations);
+  app.post("/api/donations/:id/status", updateDonationStatus);
+  app.get("/api/leaderboard", getLeaderboard);
+  app.get("/api/analytics", getAnalytics);
+
+  // Payments
+  app.post("/api/payments/create-intent", createPaymentIntent);
 
   return app;
 }
