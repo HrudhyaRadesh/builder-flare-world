@@ -60,7 +60,7 @@ function DonationForm() {
   }
 
   return (
-    <div className="rounded-2xl border bg-card p-6 shadow-sm">
+    <div className="rounded-2xl glass p-6 shadow-sm">
       <h3 className="text-xl font-semibold">Donate Surplus Food</h3>
       <p className="mt-1 text-sm text-muted-foreground">Specify food category, quantity, expiry, and pickup location. Receiver location is optional.</p>
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -155,7 +155,7 @@ function MoneyDonation() {
   }
 
   return (
-    <div className="rounded-2xl border bg-card p-6 shadow-sm">
+    <div className="rounded-2xl glass p-6 shadow-sm">
       <h3 className="text-xl font-semibold">Donate Money</h3>
       <p className="mt-1 text-sm text-muted-foreground">Support logistics and storage. Real payments via Stripe.</p>
       {!stripePk && (
@@ -188,7 +188,7 @@ function Leaderboard() {
     fetch("/api/leaderboard").then(r=>r.json()).then(setRows).catch(()=>{});
   }, []);
   return (
-    <div className="rounded-2xl border bg-card p-6 shadow-sm">
+    <div className="rounded-2xl glass p-6 shadow-sm">
       <h3 className="text-xl font-semibold">Top Donors</h3>
       <ul className="mt-4 space-y-3">
         {rows.slice(0,5).map((r, i)=> (
@@ -215,13 +215,13 @@ function Analytics() {
     fetch("/api/analytics").then(r=>r.json()).then(setStats).catch(()=>{});
   }, []);
   if (!stats) return (
-    <div className="rounded-2xl border bg-card p-6 shadow-sm">
+    <div className="rounded-2xl glass p-6 shadow-sm">
       <h3 className="text-xl font-semibold">Impact Analytics</h3>
       <p className="mt-2 text-sm text-muted-foreground">Loading...</p>
     </div>
   );
   return (
-    <div className="rounded-2xl border bg-card p-6 shadow-sm">
+    <div className="rounded-2xl glass p-6 shadow-sm">
       <h3 className="text-xl font-semibold">Impact Analytics</h3>
       <div className="mt-4 grid gap-4 sm:grid-cols-4">
         <div className="rounded-md border p-4"><p className="text-xs text-muted-foreground">Total Donations</p><p className="mt-1 text-2xl font-bold">{stats.totalDonations}</p></div>
@@ -251,14 +251,14 @@ export default function Index() {
       <section className="container py-16">
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
-            <h1 className="text-5xl/tight font-extrabold tracking-tight">End Hunger. Share Surplus. Power Communities.</h1>
+            <h1 className="text-5xl/tight font-extrabold tracking-tight gradient-text">End Hunger. Share Surplus. Power Communities.</h1>
             <p className="mt-4 text-lg text-muted-foreground">Plateful connects donors, NGOs, and the hungry to reduce food waste and improve food security. Donate meals or funds and climb the leaderboard with impact badges.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="/donate" className="rounded-md px-5 py-3 font-semibold btn-gradient">Donate Now</a>
               <a href="/login" className="rounded-md border px-5 py-3">Sign in</a>
             </div>
           </div>
-          <div className="rounded-3xl border bg-card p-6 shadow-xl">
+          <div className="rounded-3xl glass p-6 shadow-xl ring-1 ring-primary/5">
             <Analytics />
           </div>
         </div>
@@ -272,7 +272,7 @@ export default function Index() {
       <section className="container pb-24">
         <div className="grid gap-8 md:grid-cols-2">
           <Leaderboard />
-          <div className="rounded-2xl border bg-card p-6 shadow-sm">
+          <div className="rounded-2xl glass p-6 shadow-sm">
             <h3 className="text-xl font-semibold">Your Badge Progress</h3>
             <p className="mt-2 text-sm text-muted-foreground">Sign in to track your rank and earn badges as you donate more food.</p>
             <div className="mt-4 h-3 w-full rounded-full bg-muted">
