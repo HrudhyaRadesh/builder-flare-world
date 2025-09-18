@@ -252,7 +252,7 @@ export default function Index() {
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
             <h1 className="text-5xl/tight font-extrabold tracking-tight">End Hunger. Share Surplus. Power Communities.</h1>
-            <p className="mt-4 text-lg text-muted-foreground">FoodBridge connects donors, NGOs, and the hungry to reduce food waste and improve food security. Donate meals or funds and climb the leaderboard with impact badges.</p>
+            <p className="mt-4 text-lg text-muted-foreground">Plateful connects donors, NGOs, and the hungry to reduce food waste and improve food security. Donate meals or funds and climb the leaderboard with impact badges.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#donate" className="rounded-md bg-primary px-5 py-3 font-semibold text-primary-foreground">Donate Now</a>
               <a href="/login" className="rounded-md border px-5 py-3">Sign in</a>
