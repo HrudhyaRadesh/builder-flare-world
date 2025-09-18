@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Leaderboard from "./pages/Leaderboard";
 import Analytics from "./pages/Analytics";
 import Dashboard from "./pages/Dashboard";
+import Donate from "./pages/Donate";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/donate" element={<Donate />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
