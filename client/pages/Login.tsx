@@ -37,7 +37,7 @@ export default function LoginPage() {
       <section className="container py-16">
         <div className="grid gap-10 md:grid-cols-2 items-center">
           <div>
-            <h1 className="text-4xl/tight font-extrabold tracking-tight">Join FoodBridge</h1>
+            <h1 className="text-4xl/tight font-extrabold tracking-tight">Join Plateful</h1>
             <p className="mt-3 text-muted-foreground">Create an account or sign in to donate surplus food or funds. Roles: Users (donors), NGOs (distributors), Admin (oversight).</p>
             <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
               <li>• Users can donate food and money</li>
