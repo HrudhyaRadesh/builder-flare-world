@@ -5,6 +5,7 @@ import { handleDemo } from "./routes/demo";
 import { register, login, me } from "./routes/auth";
 import { createDonation, listDonations, updateDonationStatus, getLeaderboard, getAnalytics } from "./routes/donations";
 import { createPaymentIntent } from "./routes/payments";
+import { mySummary } from "./routes/users";
 
 export function createServer() {
   const app = express();
@@ -37,6 +38,9 @@ export function createServer() {
 
   // Payments
   app.post("/api/payments/create-intent", createPaymentIntent);
+
+  // Users
+  app.get("/api/users/me/summary", mySummary);
 
   return app;
 }

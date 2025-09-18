@@ -1,15 +1,12 @@
 import { RequestHandler } from "express";
 import { db } from "../db";
+import Stripe from "stripe";
 
-// Stripe is optional until keys are provided
-let stripe: any = null;
-function getStripe() {
+let stripe: Stripe | null = null;
+function getStripe(): Stripe | null {
   if (stripe) return stripe;
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return null;
-  // Lazy import to avoid requiring dependency without key
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const Stripe = require("stripe");
   stripe = new Stripe(key, { apiVersion: "2024-10-28.acacia" });
   return stripe;
 }
