@@ -113,13 +113,32 @@ function DonationForm() {
   );
 }
 
-function MoneyDonation() {
-  const token = useAuthToken();
+function PaymentInner({ onStatus }: { onStatus: (s: string) => void }) {
   const stripe = useStripe();
   const elements = useElements();
+  async function pay() {
+    if (!stripe || !elements) return;
+    onStatus("Processing...");
+    const { error } = await stripe.confirmPayment({ elements, confirmParams: { return_url: window.location.href }, redirect: "if_required" });
+    if (error) onStatus(error.message || "Payment failed");
+    else onStatus("Payment processed. Thank you!");
+  }
+  return (
+    <div className="mt-4">
+      <PaymentElement />
+      <div className="mt-4 flex items-center gap-2">
+        <button onClick={pay} className="rounded-md bg-primary px-4 py-2 font-semibold text-primary-foreground">Pay</button>
+        <span className="text-sm text-muted-foreground">Login recommended to attribute rewards</span>
+      </div>
+    </div>
+  );
+}
+
+function MoneyDonation() {
   const [amount, setAmount] = useState<number>(500);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [status, setStatus] = useState<string | null>(null);
+  const stripePromise = useMemo(() => (stripePk ? loadStripe(stripePk) : null), []);
 
   async function initialize() {
     setStatus(null);
@@ -133,14 +152,6 @@ function MoneyDonation() {
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "Failed to initialize payment");
     setClientSecret(data.clientSecret);
-  }
-
-  async function pay() {
-    if (!stripe || !elements) return;
-    setStatus("Processing...");
-    const { error } = await stripe.confirmPayment({ elements, confirmParams: { return_url: window.location.href }, redirect: "if_required" });
-    if (error) setStatus(error.message || "Payment failed");
-    else setStatus("Payment processed. Thank you!");
   }
 
   return (
@@ -161,14 +172,10 @@ function MoneyDonation() {
           <button onClick={initialize} className="rounded-md bg-secondary px-4 py-2">Create Payment</button>
         </div>
       </div>
-      {clientSecret && (
-        <div className="mt-4">
-          <PaymentElement />
-          <div className="mt-4 flex items-center gap-2">
-            <button onClick={pay} disabled={!token} className="rounded-md bg-primary px-4 py-2 font-semibold text-primary-foreground disabled:opacity-50">Pay</button>
-            <span className="text-sm text-muted-foreground">Login recommended to attribute rewards</span>
-          </div>
-        </div>
+      {clientSecret && stripePromise && (
+        <Elements stripe={stripePromise} options={{ clientSecret, appearance: { theme: 'stripe' } }}>
+          <PaymentInner onStatus={(s)=>setStatus(s)} />
+        </Elements>
       )}
       {status && <p className="mt-3 text-sm text-muted-foreground">{status}</p>}
     </div>
@@ -239,7 +246,6 @@ function Analytics() {
 }
 
 export default function Index() {
-  const stripePromise = useMemo(() => (stripePk ? loadStripe(stripePk) : null), []);
   return (
     <Layout>
       <section className="container py-16">
@@ -260,13 +266,7 @@ export default function Index() {
       <section id="donate" className="container pb-16">
         <div className="grid gap-8 md:grid-cols-2">
           <DonationForm />
-          {stripePromise ? (
-            <Elements stripe={stripePromise} options={{ appearance: { theme: 'stripe' } }}>
-              <MoneyDonation />
-            </Elements>
-          ) : (
-            <MoneyDonation />
-          )}
+          <MoneyDonation />
         </div>
       </section>
       <section className="container pb-24">
