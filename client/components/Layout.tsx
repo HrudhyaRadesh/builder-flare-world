@@ -17,7 +17,7 @@ export default function Layout({ children }: PropsWithChildren) {
         <div className="container flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2 font-extrabold text-xl">
             <span className="inline-flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">🍚</span>
-            <span className="tracking-tight">FoodBridge</span>
+            <span className="tracking-tight">Plateful</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
@@ -40,7 +40,7 @@ export default function Layout({ children }: PropsWithChildren) {
       <main className="flex-1">{children}</main>
       <footer className="border-t py-10">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} FoodBridge · Hunger & Food Security</p>
+          <p>© {new Date().getFullYear()} Plateful · Hunger & Food Security</p>
           <div className="flex gap-6">
             <a className="hover:text-foreground" href="#">Privacy</a>
             <a className="hover:text-foreground" href="#">Terms</a>
