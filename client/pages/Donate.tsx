@@ -50,7 +50,7 @@ function FoodDonationForm() {
   }
 
   return (
-    <div className="rounded-2xl border bg-card p-6 shadow-sm">
+    <div className="rounded-2xl glass p-6 shadow-lg ring-1 ring-primary/5">
       <h3 className="text-xl font-semibold">Donate Surplus Food</h3>
       <p className="mt-1 text-sm text-muted-foreground">Specify food details and locations. Receiver location is optional.</p>
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -95,7 +95,7 @@ function FoodDonationForm() {
         </div>
       </div>
       <div className="mt-6 flex items-center justify-between gap-4">
-        <button onClick={submit} className="rounded-md bg-primary px-4 py-2 font-semibold text-primary-foreground">Donate Food</button>
+        <button onClick={submit} className="rounded-md px-5 py-2.5 font-semibold btn-gradient">Donate Food</button>
         <p className="text-sm text-muted-foreground">Log in required</p>
       </div>
       {message && <p className="mt-3 text-sm text-muted-foreground">{message}</p>}
@@ -145,7 +145,7 @@ function MoneyDonationINR() {
   }
 
   return (
-    <div className="rounded-2xl border bg-card p-6 shadow-sm">
+    <div className="rounded-2xl glass p-6 shadow-lg ring-1 ring-primary/5">
       <h3 className="text-xl font-semibold">Donate Money (INR)</h3>
       <p className="mt-1 text-sm text-muted-foreground">Support operations. Real payments in Indian Rupees via Stripe.</p>
       {!stripePk && (
@@ -159,7 +159,7 @@ function MoneyDonationINR() {
           <input type="number" min={50} step={50} className="w-full rounded-md border bg-background px-3 py-2" value={amountInr} onChange={(e)=>setAmountInr(Number(e.target.value))} />
         </div>
         <div className="flex items-end">
-          <button onClick={initialize} className="rounded-md bg-secondary px-4 py-2">Create Payment</button>
+          <button onClick={initialize} className="rounded-md px-5 py-2.5 btn-gradient">Create Payment</button>
         </div>
       </div>
       {clientSecret && stripePromise && (
@@ -176,7 +176,7 @@ export default function DonatePage() {
   return (
     <Layout>
       <section className="container py-16">
-        <h1 className="text-4xl font-extrabold tracking-tight">Donate</h1>
+        <h1 className="text-4xl font-extrabold tracking-tight gradient-text">Donate</h1>
         <p className="mt-2 text-muted-foreground">Contribute surplus food or donate in Indian Rupees to support Plateful.</p>
         <div className="mt-8 grid gap-8 md:grid-cols-2">
           <FoodDonationForm />
