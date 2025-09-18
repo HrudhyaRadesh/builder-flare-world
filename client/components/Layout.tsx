@@ -13,8 +13,8 @@ const navItems = [
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30 text-foreground flex flex-col">
-      <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50/40 to-emerald-50/30 dark:from-[hsl(24_50%_7%)] dark:to-[hsl(152_35%_10%)] text-foreground flex flex-col">
+      <header className="sticky top-0 z-40 border-b supports-[backdrop-filter]:backdrop-blur bg-background/70">
         <div className="container flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2 font-extrabold text-xl">
             <span className="inline-flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">🍚</span>
@@ -27,8 +27,8 @@ export default function Layout({ children }: PropsWithChildren) {
                 to={item.to}
                 className={({ isActive }) =>
                   cn(
-                    "text-sm font-medium hover:text-primary transition-colors",
-                    isActive ? "text-primary" : "text-foreground/70",
+                    "text-sm font-medium hover:text-primary transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full",
+                    isActive ? "text-primary after:w-full" : "text-foreground/70",
                   )
                 }
               >
