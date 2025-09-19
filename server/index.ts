@@ -3,9 +3,10 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { register, login, me } from "./routes/auth";
-import { createDonation, listDonations, updateDonationStatus, getLeaderboard, getAnalytics } from "./routes/donations";
+import { createDonation, listDonations, updateDonationStatus, getLeaderboard, getAnalytics, notifyNgoForDonation } from "./routes/donations";
 import { createPaymentIntent } from "./routes/payments";
 import { mySummary } from "./routes/users";
+import { listMyNotifications, markNotificationRead } from "./routes/notifications";
 
 export function createServer() {
   const app = express();
@@ -33,6 +34,7 @@ export function createServer() {
   app.post("/api/donations", createDonation);
   app.get("/api/donations", listDonations);
   app.post("/api/donations/:id/status", updateDonationStatus);
+  app.post("/api/donations/:id/notify", notifyNgoForDonation);
   app.get("/api/leaderboard", getLeaderboard);
   app.get("/api/analytics", getAnalytics);
 
@@ -41,6 +43,10 @@ export function createServer() {
 
   // Users
   app.get("/api/users/me/summary", mySummary);
+
+  // Notifications
+  app.get("/api/notifications", listMyNotifications);
+  app.post("/api/notifications/:id/read", markNotificationRead);
 
   return app;
 }
