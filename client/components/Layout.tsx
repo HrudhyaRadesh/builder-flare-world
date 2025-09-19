@@ -44,8 +44,8 @@ export default function Layout({ children }: PropsWithChildren) {
   }, [role]);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-amber-50/40 to-emerald-50/30 dark:from-[hsl(24_50%_7%)] dark:to-[hsl(152_35%_10%)] text-foreground flex flex-col">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-20 dark:opacity-25" style={{ backgroundImage: "url(https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg)" }} />
+    <div className="relative min-h-screen mesh-bg text-foreground flex flex-col">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 mix-blend-multiply vignette" />
       <header className="sticky top-0 z-40 border-b supports-[backdrop-filter]:backdrop-blur bg-background/70">
         <div className="container flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2 font-extrabold text-xl">
