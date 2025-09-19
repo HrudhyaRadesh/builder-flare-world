@@ -1,0 +1,18 @@
+[
+  {
+    "id": "ntf_q77flj7g_mfqd8w27",
+    "createdAt": "2025-09-19T04:55:15.535Z",
+    "read": false,
+    "donationId": "don_r6kgm80o_mfqbrw1z",
+    "toRole": "ngo",
+    "message": "Pickup requested: 1 x Cooked Meals at (12.37140060616455, 76.5848976345423)."
+  },
+  {
+    "id": "ntf_zeqroytm_mfqd96vg",
+    "createdAt": "2025-09-19T04:55:29.548Z",
+    "read": false,
+    "donationId": "don_ayelpswp_mfqbr16h",
+    "toRole": "ngo",
+    "message": "Pickup requested: 1 x Cooked Meals at (12.37141480356264, 76.5849128460079)."
+  }
+]

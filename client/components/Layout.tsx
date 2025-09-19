@@ -9,6 +9,7 @@ const navItems = [
   { to: "/analytics", label: "Analytics" },
   { to: "/login", label: "Login" },
   { to: "/dashboard", label: "Dashboard" },
+  { to: "/notifications", label: "Notifications" },
 ];
 
 export default function Layout({ children }: PropsWithChildren) {

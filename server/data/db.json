@@ -7,13 +7,29 @@
       "email": "hrudhyar28@gmail.com",
       "passwordHash": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
       "role": "user"
+    },
+    {
+      "id": "usr_kpamms22_mfqd8ezk",
+      "createdAt": "2025-09-19T04:54:53.408Z",
+      "name": "Navaneeth",
+      "email": "navaneeth@gmail.com",
+      "passwordHash": "f14f286ca435d1fa3b9d8041e8f06aa0af7ab28ea8edcd7e11fd485a100b632b",
+      "role": "admin"
+    },
+    {
+      "id": "usr_nmjs1yuo_mfqda2t5",
+      "createdAt": "2025-09-19T04:56:10.937Z",
+      "name": "Inchara",
+      "email": "monishapavithran7@gmail.com",
+      "passwordHash": "4e20613ec3a63732f98630b9429e1600d47a08f059496d39ffd353f0c3038f39",
+      "role": "ngo"
     }
   ],
   "donations": [
     {
       "id": "don_ayelpswp_mfqbr16h",
       "createdAt": "2025-09-19T04:13:22.745Z",
-      "status": "pending",
+      "status": "distributed",
       "userId": "usr_bb7sdxne_mfpjmb4k",
       "category": "Cooked Meals",
       "quantity": 1,
@@ -26,7 +42,7 @@
     {
       "id": "don_r6kgm80o_mfqbrw1z",
       "createdAt": "2025-09-19T04:14:02.759Z",
-      "status": "pending",
+      "status": "accepted",
       "userId": "usr_ldl2z0ib_mfqbrg6r",
       "category": "Cooked Meals",
       "quantity": 1,
