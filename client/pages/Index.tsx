@@ -248,7 +248,8 @@ function Analytics() {
 export default function Index() {
   return (
     <Layout>
-      <section className="container py-16">
+      <section className="container py-16 relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-20 dark:opacity-25" style={{ backgroundImage: "url(https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg)" }} />
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
             <h1 className="text-5xl/tight font-extrabold tracking-tight gradient-text">End Hunger. Share Surplus. Power Communities.</h1>
