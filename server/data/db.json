@@ -1,5 +1,41 @@
 {
-  "users": [],
-  "donations": [],
+  "users": [
+    {
+      "id": "usr_ldl2z0ib_mfqbrg6r",
+      "createdAt": "2025-09-19T04:13:42.195Z",
+      "name": "Hrudhya R",
+      "email": "hrudhyar28@gmail.com",
+      "passwordHash": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+      "role": "user"
+    }
+  ],
+  "donations": [
+    {
+      "id": "don_ayelpswp_mfqbr16h",
+      "createdAt": "2025-09-19T04:13:22.745Z",
+      "status": "pending",
+      "userId": "usr_bb7sdxne_mfpjmb4k",
+      "category": "Cooked Meals",
+      "quantity": 1,
+      "expiryDate": "2025-09-28",
+      "donorLat": 12.37141480356264,
+      "donorLng": 76.5849128460079,
+      "receiverLat": null,
+      "receiverLng": null
+    },
+    {
+      "id": "don_r6kgm80o_mfqbrw1z",
+      "createdAt": "2025-09-19T04:14:02.759Z",
+      "status": "pending",
+      "userId": "usr_ldl2z0ib_mfqbrg6r",
+      "category": "Cooked Meals",
+      "quantity": 1,
+      "expiryDate": "2025-09-24",
+      "donorLat": 12.37140060616455,
+      "donorLng": 76.5848976345423,
+      "receiverLat": null,
+      "receiverLng": null
+    }
+  ],
   "payments": []
 }
