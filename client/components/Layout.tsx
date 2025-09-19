@@ -45,7 +45,7 @@ export default function Layout({ children }: PropsWithChildren) {
 
   return (
     <div className="relative min-h-screen mesh-bg text-foreground flex flex-col">
-      <div className="absolute inset-0 -z-20 bg-cover bg-center opacity-55" style={{ backgroundImage: "url(https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg)" }} />
+      <div className="absolute inset-0 -z-20 bg-cover bg-center opacity-50" style={{ backgroundImage: "url(https://images.pexels.com/photos/31095001/pexels-photo-31095001.jpeg)" }} />
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 mix-blend-multiply vignette" />
       <header className="sticky top-0 z-40 border-b supports-[backdrop-filter]:backdrop-blur bg-background/70">
         <div className="container flex h-16 items-center justify-between">
