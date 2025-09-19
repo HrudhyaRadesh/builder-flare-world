@@ -249,7 +249,7 @@ export default function Index() {
   return (
     <Layout>
       <section className="container py-16 relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 opacity-60 mix-blend-multiply mesh-bg" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-black/25 via-black/10 to-black/30" />
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div>
             <h1 className="text-5xl/tight font-extrabold tracking-tight gradient-text">End Hunger. Share Surplus. Power Communities.</h1>
