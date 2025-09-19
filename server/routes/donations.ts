@@ -1,6 +1,7 @@
 import { RequestHandler } from "express";
 import { db, Donation } from "../db";
 import { decodeToken } from "./auth";
+import { notifications } from "../notificationsStore";
 
 export const createDonation: RequestHandler = (req, res) => {
   const auth = req.headers.authorization?.replace("Bearer ", "");
@@ -50,6 +51,19 @@ export const updateDonationStatus: RequestHandler = (req, res) => {
   const updated = db.updateDonationStatus(id, status);
   if (!updated) return res.status(404).json({ error: "Donation not found" });
   res.json(updated);
+};
+
+export const notifyNgoForDonation: RequestHandler = (req, res) => {
+  const auth = req.headers.authorization?.replace("Bearer ", "");
+  const decoded = decodeToken(auth || "");
+  if (!decoded) return res.status(401).json({ error: "Unauthorized" });
+  if (decoded.role !== "admin") return res.status(403).json({ error: "Forbidden" });
+  const { id } = req.params as { id: string };
+  const donation = db.listDonations().find((d) => d.id === id);
+  if (!donation) return res.status(404).json({ error: "Donation not found" });
+  const msg = `Pickup requested: ${donation.quantity} x ${donation.category} at (${donation.donorLat ?? "?"}, ${donation.donorLng ?? "?"}).`;
+  const note = notifications.add({ donationId: donation.id, toRole: "ngo", message: msg });
+  res.json({ ok: true, notification: note });
 };
 
 export const getLeaderboard: RequestHandler = (_req, res) => {
