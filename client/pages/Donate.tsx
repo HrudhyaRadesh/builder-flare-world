@@ -173,15 +173,26 @@ function MoneyDonationINR() {
 }
 
 export default function DonatePage() {
+  const userStr = localStorage.getItem("fb_user");
+  const role = userStr ? JSON.parse(userStr)?.role : null;
+  const allowed = role === "user" || !role; // show for guests and users
   return (
     <Layout>
-      <section className="container py-16">
+      <section className="container py-16 relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-amber-100/60 to-emerald-100/60 dark:from-transparent dark:to-transparent" />
         <h1 className="text-4xl font-extrabold tracking-tight gradient-text">Donate</h1>
         <p className="mt-2 text-muted-foreground">Contribute surplus food or donate in Indian Rupees to support Plateful.</p>
-        <div className="mt-8 grid gap-8 md:grid-cols-2">
-          <FoodDonationForm />
-          <MoneyDonationINR />
-        </div>
+        {allowed ? (
+          <div className="mt-8 grid gap-8 md:grid-cols-2">
+            <FoodDonationForm />
+            <MoneyDonationINR />
+          </div>
+        ) : (
+          <div className="mt-8 rounded-2xl glass p-8 shadow-lg ring-1 ring-primary/5">
+            <h3 className="text-xl font-semibold">Donations are for User accounts</h3>
+            <p className="mt-2 text-sm text-muted-foreground">Please sign in as a User to donate food or funds.</p>
+          </div>
+        )}
       </section>
     </Layout>
   );
