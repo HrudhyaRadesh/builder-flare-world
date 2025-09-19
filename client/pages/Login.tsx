@@ -26,6 +26,7 @@ export default function LoginPage() {
       if (!res.ok) throw new Error(data.error || "Failed");
       localStorage.setItem("fb_token", data.token);
       localStorage.setItem("fb_user", JSON.stringify(data.user));
+      window.dispatchEvent(new Event("auth-changed"));
       setMessage("Success. You can now donate and access your dashboard.");
     } catch (err: any) {
       setMessage(err.message);
