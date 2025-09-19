@@ -259,8 +259,16 @@ export default function Index() {
               <a href="/login" className="rounded-md border px-5 py-3">Sign in</a>
             </div>
           </div>
-          <div className="rounded-3xl glass p-6 shadow-xl ring-1 ring-primary/5">
-            <Analytics />
+          <div className="space-y-4">
+            <img
+              src="https://images.pexels.com/photos/31095001/pexels-photo-31095001.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Community kitchen serving meals"
+              className="w-full rounded-3xl object-cover shadow-2xl aspect-[4/3]"
+              loading="lazy"
+            />
+            <div className="rounded-3xl glass p-6 shadow-xl ring-1 ring-primary/5">
+              <Analytics />
+            </div>
           </div>
         </div>
       </section>
