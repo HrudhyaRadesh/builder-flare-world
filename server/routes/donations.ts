@@ -8,7 +8,15 @@ export const createDonation: RequestHandler = (req, res) => {
   const decoded = decodeToken(auth || "");
   if (!decoded) return res.status(401).json({ error: "Unauthorized" });
 
-  const { category, quantity, expiryDate, donorLat, donorLng, receiverLat, receiverLng } = req.body as {
+  const {
+    category,
+    quantity,
+    expiryDate,
+    donorLat,
+    donorLng,
+    receiverLat,
+    receiverLng,
+  } = req.body as {
     category: string;
     quantity: number;
     expiryDate: string;
@@ -18,7 +26,12 @@ export const createDonation: RequestHandler = (req, res) => {
     receiverLng?: number | null;
   };
 
-  if (!category || !expiryDate || typeof quantity !== "number" || quantity <= 0) {
+  if (
+    !category ||
+    !expiryDate ||
+    typeof quantity !== "number" ||
+    quantity <= 0
+  ) {
     return res.status(400).json({ error: "Invalid donation data" });
   }
 
@@ -43,7 +56,8 @@ export const updateDonationStatus: RequestHandler = (req, res) => {
   const auth = req.headers.authorization?.replace("Bearer ", "");
   const decoded = decodeToken(auth || "");
   if (!decoded) return res.status(401).json({ error: "Unauthorized" });
-  if (!(decoded.role === "admin" || decoded.role === "ngo")) return res.status(403).json({ error: "Forbidden" });
+  if (!(decoded.role === "admin" || decoded.role === "ngo"))
+    return res.status(403).json({ error: "Forbidden" });
 
   const { id } = req.params as { id: string };
   const { status } = req.body as { status: Donation["status"] };
@@ -57,12 +71,17 @@ export const notifyNgoForDonation: RequestHandler = (req, res) => {
   const auth = req.headers.authorization?.replace("Bearer ", "");
   const decoded = decodeToken(auth || "");
   if (!decoded) return res.status(401).json({ error: "Unauthorized" });
-  if (decoded.role !== "admin") return res.status(403).json({ error: "Forbidden" });
+  if (decoded.role !== "admin")
+    return res.status(403).json({ error: "Forbidden" });
   const { id } = req.params as { id: string };
   const donation = db.listDonations().find((d) => d.id === id);
   if (!donation) return res.status(404).json({ error: "Donation not found" });
   const msg = `Pickup requested: ${donation.quantity} x ${donation.category} at (${donation.donorLat ?? "?"}, ${donation.donorLng ?? "?"}).`;
-  const note = notifications.add({ donationId: donation.id, toRole: "ngo", message: msg });
+  const note = notifications.add({
+    donationId: donation.id,
+    toRole: "ngo",
+    message: msg,
+  });
   res.json({ ok: true, notification: note });
 };
 

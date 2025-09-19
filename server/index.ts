@@ -3,10 +3,20 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { register, login, me } from "./routes/auth";
-import { createDonation, listDonations, updateDonationStatus, getLeaderboard, getAnalytics, notifyNgoForDonation } from "./routes/donations";
+import {
+  createDonation,
+  listDonations,
+  updateDonationStatus,
+  getLeaderboard,
+  getAnalytics,
+  notifyNgoForDonation,
+} from "./routes/donations";
 import { createPaymentIntent } from "./routes/payments";
 import { mySummary } from "./routes/users";
-import { listMyNotifications, markNotificationRead } from "./routes/notifications";
+import {
+  listMyNotifications,
+  markNotificationRead,
+} from "./routes/notifications";
 
 export function createServer() {
   const app = express();

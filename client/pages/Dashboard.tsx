@@ -38,7 +38,10 @@ export default function DashboardPage() {
     if (!token) return alert("Login required");
     const res = await fetch(`/api/donations/${id}/status`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({ status }),
     });
     if (res.ok) {
@@ -67,24 +70,40 @@ export default function DashboardPage() {
   return (
     <Layout>
       <section className="container py-16">
-        <h1 className="text-4xl font-extrabold tracking-tight">Welcome, {name}</h1>
-        <p className="mt-2 text-muted-foreground">This dashboard will show your badges, rank, and donation history.</p>
+        <h1 className="text-4xl font-extrabold tracking-tight">
+          Welcome, {name}
+        </h1>
+        <p className="mt-2 text-muted-foreground">
+          This dashboard will show your badges, rank, and donation history.
+        </p>
         <div className="mt-8 grid gap-8 md:grid-cols-2">
           <div className="rounded-2xl border bg-card p-6 shadow-sm">
             <h3 className="text-xl font-semibold">Badges</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Earn badges as you donate more meals. Your next milestone is at 10 meals.</p>
-            <div className="mt-4 h-3 w-full rounded-full bg-muted"><div className="h-3 rounded-full bg-primary" style={{ width: "20%" }} /></div>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Earn badges as you donate more meals. Your next milestone is at 10
+              meals.
+            </p>
+            <div className="mt-4 h-3 w-full rounded-full bg-muted">
+              <div
+                className="h-3 rounded-full bg-primary"
+                style={{ width: "20%" }}
+              />
+            </div>
           </div>
           <div className="rounded-2xl border bg-card p-6 shadow-sm">
             <h3 className="text-xl font-semibold">Your Donations</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Coming soon: a list of your recent donations and statuses.</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Coming soon: a list of your recent donations and statuses.
+            </p>
           </div>
         </div>
 
         {isAdmin && (
           <div className="mt-12 rounded-2xl border bg-card p-6 shadow-sm">
             <h3 className="text-xl font-semibold">Admin · Manage Donations</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Update statuses and notify NGOs for pickup.</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Update statuses and notify NGOs for pickup.
+            </p>
             <div className="mt-4 overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -103,13 +122,21 @@ export default function DashboardPage() {
                     <tr key={r.id} className="border-t">
                       <td className="py-3 pr-4">{r.category}</td>
                       <td className="py-3 pr-4">{r.quantity}</td>
-                      <td className="py-3 pr-4">{new Date(r.expiryDate).toLocaleDateString()}</td>
-                      <td className="py-3 pr-4">{r.donorLat ?? "-"}, {r.donorLng ?? "-"}</td>
-                      <td className="py-3 pr-4">{r.receiverLat ?? "-"}, {r.receiverLng ?? "-"}</td>
+                      <td className="py-3 pr-4">
+                        {new Date(r.expiryDate).toLocaleDateString()}
+                      </td>
+                      <td className="py-3 pr-4">
+                        {r.donorLat ?? "-"}, {r.donorLng ?? "-"}
+                      </td>
+                      <td className="py-3 pr-4">
+                        {r.receiverLat ?? "-"}, {r.receiverLng ?? "-"}
+                      </td>
                       <td className="py-3 pr-4">
                         <select
                           value={r.status}
-                          onChange={(e) => updateStatus(r.id, e.target.value as any)}
+                          onChange={(e) =>
+                            updateStatus(r.id, e.target.value as any)
+                          }
                           className="rounded-md border bg-background px-2 py-1"
                         >
                           <option value="pending">pending</option>
@@ -118,13 +145,20 @@ export default function DashboardPage() {
                         </select>
                       </td>
                       <td className="py-3 pr-4">
-                        <button onClick={() => notifyNgo(r.id)} className="rounded-md border px-3 py-1">Notify NGO</button>
+                        <button
+                          onClick={() => notifyNgo(r.id)}
+                          className="rounded-md border px-3 py-1"
+                        >
+                          Notify NGO
+                        </button>
                       </td>
                     </tr>
                   ))}
                   {rows.length === 0 && (
                     <tr>
-                      <td className="py-4 text-muted-foreground" colSpan={7}>No donations yet.</td>
+                      <td className="py-4 text-muted-foreground" colSpan={7}>
+                        No donations yet.
+                      </td>
                     </tr>
                   )}
                 </tbody>

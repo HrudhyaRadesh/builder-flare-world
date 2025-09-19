@@ -45,12 +45,23 @@ export default function Layout({ children }: PropsWithChildren) {
 
   return (
     <div className="relative min-h-screen mesh-bg text-foreground flex flex-col">
-      <div className="absolute inset-0 -z-20 bg-cover bg-center bg-fixed opacity-70" style={{ backgroundImage: "url(https://images.pexels.com/photos/31095001/pexels-photo-31095001.jpeg)" }} />
+      <div
+        className="absolute inset-0 -z-20 bg-cover bg-center bg-fixed opacity-70"
+        style={{
+          backgroundImage:
+            "url(https://images.pexels.com/photos/31095001/pexels-photo-31095001.jpeg)",
+        }}
+      />
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 mix-blend-multiply vignette" />
       <header className="sticky top-0 z-40 border-b supports-[backdrop-filter]:backdrop-blur bg-background/70">
         <div className="container flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 font-extrabold text-xl">
-            <span className="inline-flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">🍚</span>
+          <Link
+            to="/"
+            className="flex items-center gap-2 font-extrabold text-xl"
+          >
+            <span className="inline-flex size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
+              🍚
+            </span>
             <span className="tracking-tight">Plateful</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
@@ -61,7 +72,9 @@ export default function Layout({ children }: PropsWithChildren) {
                 className={({ isActive }) =>
                   cn(
                     "text-sm font-medium hover:text-primary transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full",
-                    isActive ? "text-primary after:w-full" : "text-foreground/70",
+                    isActive
+                      ? "text-primary after:w-full"
+                      : "text-foreground/70",
                   )
                 }
               >
@@ -76,9 +89,15 @@ export default function Layout({ children }: PropsWithChildren) {
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Plateful · Hunger & Food Security</p>
           <div className="flex gap-6">
-            <a className="hover:text-foreground" href="#">Privacy</a>
-            <a className="hover:text-foreground" href="#">Terms</a>
-            <a className="hover:text-foreground" href="#">Contact</a>
+            <a className="hover:text-foreground" href="#">
+              Privacy
+            </a>
+            <a className="hover:text-foreground" href="#">
+              Terms
+            </a>
+            <a className="hover:text-foreground" href="#">
+              Contact
+            </a>
           </div>
         </div>
       </footer>
